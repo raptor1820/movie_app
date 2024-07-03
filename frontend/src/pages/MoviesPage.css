@@ -1,0 +1,29 @@
+.movies-page {
+    margin: 20px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    width: 100%;
+}
+
+@media only screen and (max-width: 600px) {
+    .movies-page {
+        width: 100%;
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+.outer-div {
+    margin: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.buttons-div {
+    margin: 20px;
+}
+
+.button-text {
+    color: #e8e0d5;
+}

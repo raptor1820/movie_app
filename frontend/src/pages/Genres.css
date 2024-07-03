@@ -1,0 +1,22 @@
+.genres-page {
+    margin: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.genres-div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 20px;
+}
+
+.movies-page {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    width: 100%;
+}
