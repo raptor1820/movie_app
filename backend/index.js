@@ -3,18 +3,18 @@ import movies_data from "./movies_data.json";
 import dotenv from "dotenv";
 import fs from "fs";
 import cors from "cors";
-import morgan from "morgan";
+import e from "express";
 
 const app = express();
 
 dotenv.config();
-app.use(morgan("tiny"));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 app.get("/movies/all", (req, res) => {
-    console.log("all data requested");
-    return res.status(200).json(movies_data);
+    if (movies_data) return res.status(200).json(movies_data);
+    else return res.status(404).json({ message: "No movies found" });
 });
 
 app.get("/movies/:id", (req, res) => {

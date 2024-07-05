@@ -172,19 +172,16 @@ const Manage = () => {
     const handleGenreDelete = (item, index) => {
         let arr = [...genres];
         arr.splice(index, 1);
-        console.log(item);
         setGenres(arr);
     };
     const handleRatingDelete = (item, index) => {
         let arr = [...ratings];
         arr.splice(index, 1);
-        console.log(item);
         setRatings(arr);
     };
     const handleActorDelete = (item, index) => {
         let arr = [...actors];
         arr.splice(index, 1);
-        console.log(item);
         setActors(arr);
     };
     const handleDelete = async (event) => {
@@ -1101,8 +1098,10 @@ const Manage = () => {
                     <MenuItem value={"Update"}>Update</MenuItem>
                 </Select>
                 {formType()}
-                <Typography variant="h5" style={{ color: "#e8e0d5" }}>
-                    {status}
+                <Typography
+                    variant="h5"
+                    style={{ margin: "30px", color: "#e8e0d5" }}>
+                    ;{status}
                 </Typography>
             </div>
         </div>
