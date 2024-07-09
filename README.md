@@ -4,6 +4,8 @@ This is a web app built with React + Express, that displays movies present in a 
 
 ## Setup
 
+In `/backend` create a copy of `movies_data_locked.json` called `movies_data.json`. This is the working copy of the DB.
+
 ### If using Bun
 
 In a terminal window cd into `/backend` and run the following command
