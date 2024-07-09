@@ -17,8 +17,8 @@ import { useSearchParams } from "react-router-dom";
 const Manage = () => {
     // eslint-disable-next-line no-unused-vars
     const [searchParams, setSearchParams] = useSearchParams();
-    const [action, setAction] = useState("Add");
-    const [url, setUrl] = useState("http://localhost:3000/addmovie");
+    const [action, setAction] = useState("Update");
+    const [url, setUrl] = useState("http://localhost:3000/updatemovie");
     const [title, setTitle] = useState("");
     const [year, setYear] = useState();
     const [genres, setGenres] = useState([]);
@@ -1101,7 +1101,7 @@ const Manage = () => {
                 <Typography
                     variant="h5"
                     style={{ margin: "30px", color: "#e8e0d5" }}>
-                    ;{status}
+                    {status}
                 </Typography>
             </div>
         </div>

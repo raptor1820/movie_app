@@ -12,7 +12,7 @@ import { useParams } from "react-router-dom";
 import "./MovieDetails.css";
 import MovieCard from "../components/MovieCard";
 import StarBorderIcon from "@mui/icons-material/StarBorder";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const modalStyle = {
     padding: "20px",
@@ -35,6 +35,7 @@ const MovieDetails = () => {
     const { id } = useParams();
     const [movie, setMovie] = useState();
     const [modalOpen, setModalOpen] = useState(false);
+    const navigate = useNavigate();
     const [modalValue, setModalValue] = useState(
         "Are you sure that you want to delete this movie?"
     );
@@ -58,12 +59,8 @@ const MovieDetails = () => {
             .then((data) => {
                 setModalValue(data.message);
                 setTimeout(() => {
-                    setModalValue("Closing modal now...");
-                }, 3000).then(
-                    setTimeout(() => {
-                        handleModal();
-                    }, 5000)
-                );
+                    navigate("/");
+                }, 3000);
             });
     };
     const handleModal = () => {
@@ -183,7 +180,7 @@ const MovieDetails = () => {
                             <Button
                                 style={{ marginRight: "10px" }}
                                 component={Link}
-                                to={`/manage?action=Update&id=${movie.id}&title=${movie.title}&year=${movie.year}&contentRating=${movie.contentRating}&storyline=${movie.storyline}&genres=${movie.genres}&actors=${movie.actors}&ratings=${movie.ratings}&posterurl=${movie.posterurl}&releaseDate=${movie.releaseDate}&duration=${movie.duration}&imdbRating=${movie.imdbRating}&averageRating=${movie.averageRating}&originalTitle=${movie.originalTitle}`}>
+                                to={`/manage?action=Update&id=${movie.id}&title=${movie.title}&year=${movie.year}&contentRating=${movie.contentRating}&storyline=${movie.storyline}&genres=${movie.genres}&actors=${movie.actors}&ratings=${movie.ratings}&posterurl=${movie.posterurl}&releaseDate=${movie.releaseDate}&duration=${movie.duration}&imdbRating=${movie.imdbRating}&averageRating=${movie.averageRating}&originalTitle=${movie.originalTitle}&poster=${movie.poster}`}>
                                 Update Details
                             </Button>
                             <Button
