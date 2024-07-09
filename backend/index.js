@@ -3,18 +3,27 @@ import movies_data from "./movies_data.json";
 import dotenv from "dotenv";
 import fs from "fs";
 import cors from "cors";
-import e from "express";
-
+import morgan from "morgan";
 const app = express();
-
+const port = process.env.PORT ?? 3000;
 dotenv.config();
 
+const checkMovie = (req, res, next) => {
+    try {
+        if (!movies_data)
+            return res.status(404).json({ message: "Movies DB is empty" });
+        next();
+    } catch (error) {
+        return res.status(404).json({ message: "Movies DB not found" });
+    }
+};
+app.use(checkMovie);
+app.use(morgan("tiny"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 app.get("/movies/all", (req, res) => {
-    if (movies_data) return res.status(200).json(movies_data);
-    else return res.status(404).json({ message: "No movies found" });
+    return res.status(200).json(movies_data);
 });
 
 app.get("/movies/:id", (req, res) => {
@@ -187,10 +196,14 @@ app.delete("/deletemovie/:id", (req, res) => {
     }
 });
 
-app.listen(process.env.PORT ?? 3000, (error) => {
+app.all("*", (req, res) => {
+    return res.status(404).json({ message: "Route not found" });
+});
+
+app.listen(port, (error) => {
     if (error) {
         console.log("error");
     } else {
-        console.log(`listening on port ${process.env.PORT}`);
+        console.log(`listening on port ${port}`);
     }
 });
